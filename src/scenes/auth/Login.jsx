@@ -26,8 +26,6 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
@@ -44,21 +42,10 @@ export default function SignInSide() {
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        {/* Consider removing xs={false} on smaller screens if you want to hide the background image */}
+       
+        {/* This Grid item is now set to full width for all screen sizes */}
+        <Grid item xs={12} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
