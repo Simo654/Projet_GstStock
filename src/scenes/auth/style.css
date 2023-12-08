@@ -1,0 +1,11 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* Make sure overflow does not cut off any part of the page */
+  overflow-x: hidden;
+}
+main{
+    width:100%;
+}

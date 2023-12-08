@@ -12,6 +12,8 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import './style.css';
+import cover from './cover.png'
 
 function Copyright(props) {
   return (
@@ -26,7 +28,10 @@ function Copyright(props) {
   );
 }
 
+
 const defaultTheme = createTheme();
+
+
 
 export default function SignInSide() {
   const handleSubmit = (event) => {
@@ -40,12 +45,23 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{ height: '100vh' , width: '100%'}}>
         <CssBaseline />
-        {/* Consider removing xs={false} on smaller screens if you want to hide the background image */}
-       
-        {/* This Grid item is now set to full width for all screen sizes */}
-        <Grid item xs={12} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage: `url(${cover})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: (t) =>
+              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
