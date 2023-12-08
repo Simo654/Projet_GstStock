@@ -39,7 +39,7 @@ const Team = () => {
       field: "accessLevel",
       headerName: "Access Level",
       flex: 1,
-      renderCell: ({ row: { access } }) => {
+     renderCell: ({ row: { access } }) => {
         return (
           <Box
             width="60%"

@@ -5,11 +5,18 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
 import { FormControl, InputLabel, Select, MenuItem, FormHelperText } from '@mui/material';
 
+import React, { useState } from 'react';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
 const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
     console.log(values);
+   
   };
 
   return (
@@ -116,6 +123,20 @@ const Form = () => {
                 helperText={touched.address2 && errors.address2}
                 sx={{ gridColumn: "span 2" }}
               />
+              <TextField
+              fullWidth
+              variant="filled"
+              type="password"  
+              label="Password" 
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={values.password}
+              name="password"
+              error={!!touched.password && !!errors.password}
+              helperText={touched.password && errors.password}
+              sx={{ gridColumn: "span 2" }}
+              />
+
               <FormControl fullWidth variant="filled" sx={{ gridColumn: "span 2" }}>
               <InputLabel htmlFor="role">Role</InputLabel>
               <Select
