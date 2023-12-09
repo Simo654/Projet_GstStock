@@ -231,7 +231,7 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="log out"
-              to="/Login"
+              to="/login"
               icon={<LogoutIcon />}
               selected={selected}
               setSelected={setSelected}
