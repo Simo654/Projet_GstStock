@@ -15,6 +15,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
 import Login from "./scenes/auth/Login";
+import Forgot from './scenes/auth/Forgot';
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -26,11 +27,22 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          {location.pathname !== "/login" && <Sidebar isSidebar={isSidebarVisible} />}
-          <main className={location.pathname === "/login" ? "full-content" : "content"}>
-            {location.pathname !== "/login" && <Topbar setIsSidebar={setIsSidebarVisible} />}
+         
+            {
+  location.pathname !== "/login" && location.pathname !== "/forgot-pass" && (
+    <Sidebar isSidebar={isSidebarVisible} />
+  )
+}
+<main className={location.pathname === "/login" ? "full-content" : "content"}>
+  {
+    location.pathname !== "/login" && location.pathname !== "/forgot-pass" && (
+      <Topbar setIsSidebar={setIsSidebarVisible} />
+    )
+  }
+
             <Routes>
               <Route path="/login" element={<Login />} />
+              <Route path="/forgot-pass" element={<Forgot />} />
               <Route path="/" element={<Navigate to="/login" />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
