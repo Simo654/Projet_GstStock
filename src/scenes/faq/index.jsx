@@ -84,7 +84,8 @@ const FAQ = () => {
           value={userInput}
           onChange={handleInputChange}
         />
-        <Button variant="contained" color="primary" onClick={sendMessage}>
+          
+        <Button variant="contained" color="primary" sx={{ backgroundColor: "greenyellow" }} onClick={sendMessage}>
           Send
         </Button>
       </Box>
