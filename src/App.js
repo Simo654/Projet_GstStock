@@ -16,30 +16,30 @@ import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
 import Login from "./scenes/auth/Login";
 import Forgot from './scenes/auth/Forgot';
+import NotFound from "./scenes/Erreur/index";
 
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const location = useLocation();
 
+  // Liste des chemins où le Sidebar ne doit pas être affiché
+  const excludedPaths = ["/login", "/forgot-pass", "/NotFound"];
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-         
-            {
-  location.pathname !== "/login" && location.pathname !== "/forgot-pass" && (
-    <Sidebar isSidebar={isSidebarVisible} />
-  )
-}
-<main className={location.pathname === "/login" ? "full-content" : "content"}>
-  {
-    location.pathname !== "/login" && location.pathname !== "/forgot-pass" && (
-      <Topbar setIsSidebar={setIsSidebarVisible} />
-    )
-  }
-
+          {!excludedPaths.includes(location.pathname) && (
+            <Sidebar isSidebar={isSidebarVisible} />
+          )}
+          <main
+            className={location.pathname === "/login" ? "full-content" : "content"}
+          >
+            {!excludedPaths.includes(location.pathname) && (
+              <Topbar setIsSidebar={setIsSidebarVisible} />
+            )}
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route path="/forgot-pass" element={<Forgot />} />
@@ -53,7 +53,10 @@ function App() {
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
               <Route path="/faq" element={<FAQ />} />
+              <Route path="/NotFound" element={<NotFound />} />
               <Route path="/calendar" element={<Calendar />} />
+              
+              <Route path="*" element={<Navigate to="/NotFound" />} />
             </Routes>
           </main>
         </div>

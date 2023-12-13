@@ -146,9 +146,16 @@ const Team = () => {
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${colors.grey[100]} !important`,
           },
+          "& .MuiDataGrid-root": {
+            border: "none",}
         }}
       >
-        <Button variant="contained" color="primary" onClick={handleAddClick}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleAddClick}
+          sx={{ justifyContent: 'flex-end' }} // Ajustement pour aligner à droite
+        >
           Ajouter
         </Button>
 

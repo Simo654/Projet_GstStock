@@ -2,7 +2,8 @@ import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
 
 
 
@@ -30,6 +31,11 @@ import 'bootstrap/dist/css/bootstrap.css';
                 <button type="submit" className="btn btn-primary">
                   Reset Password
                 </button>
+                <Grid item>
+                  <Link href="/login" variant="body2">
+                    {"Sign Up"}
+                  </Link>
+                </Grid>
               </div>
               
             </form>
