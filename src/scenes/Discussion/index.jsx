@@ -20,7 +20,7 @@ import "react-quill/dist/quill.snow.css";
 import InputAdornment from "@mui/material/InputAdornment";
 import ImageIcon from "@mui/icons-material/Image";
 
-const FAQ = ({ setDescription, description }) => {
+const Discussion = ({ setDescription, description }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -75,7 +75,7 @@ const FAQ = ({ setDescription, description }) => {
 
   return (
     <Box m="20px">
-      <Header title="FAQ" subtitle="Frequently Asked Questions Page" />
+      <Header title="Discussion" subtitle="-------------------------------" />
 
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -131,4 +131,4 @@ const FAQ = ({ setDescription, description }) => {
   );
 };
 
-export default FAQ;
+export default Discussion;

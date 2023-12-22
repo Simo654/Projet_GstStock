@@ -3,20 +3,20 @@ import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
-import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
 import Bar from "./scenes/bar";
-import Form from "./scenes/form";
 import Line from "./scenes/line";
-import Pie from "./scenes/pie";
-import FAQ from "./scenes/faq";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
-import Calendar from "./scenes/calendar/calendar";
 import Login from "./scenes/auth/Login";
 import Forgot from './scenes/auth/Forgot';
 import NotFound from "./scenes/Erreur/index";
+import Club from "./scenes/Club"
+import Users from "./scenes/Users";
+import Produit from "./scenes/Produit";
+import Calendrier from "./scenes/Calendrier/calendar";
+import Discussion from "./scenes/Discussion";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -45,16 +45,16 @@ function App() {
               <Route path="/forgot-pass" element={<Forgot />} />
               <Route path="/" element={<Navigate to="/login" />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/team" element={<Team />} />
+              <Route path="/Users" element={<Users />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
-              <Route path="/form" element={<Form />} />
+              <Route path="/Club" element={<Club />} />
               <Route path="/bar" element={<Bar />} />
-              <Route path="/pie" element={<Pie />} />
+              <Route path="/Produit" element={<Produit />} />
               <Route path="/line" element={<Line />} />
-              <Route path="/faq" element={<FAQ />} />
+              <Route path="/Discussion" element={<Discussion />} />
               <Route path="/NotFound" element={<NotFound />} />
-              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/Calendrier" element={<Calendrier />} />
               
               <Route path="*" element={<Navigate to="/NotFound" />} />
             </Routes>

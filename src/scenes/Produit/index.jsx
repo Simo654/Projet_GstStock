@@ -13,7 +13,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-const Team = () => {
+const Produit = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -58,43 +58,13 @@ const Team = () => {
 
   const columns = [
     { field: "id", headerName: "ID" },
-    { field: "lastName", headerName: "Nom", flex: 1 },
-    { field: "firstName", headerName: "Prénom", flex: 1 },
-    { field: "address", headerName: "Address", flex: 1 },
-    { field: "email", headerName: "Email", flex: 1 },
-    { field: "phone", headerName: "Telephone", flex: 1 },
-    { field: "password", headerName: "Mot de passe", flex: 1 },
-    {
-      field: "accessLevel",
-      headerName: "Rôle",
-      flex: 1,
-      renderCell: ({ row: { access } }) => {
-        return (
-          <Box
-            width="60%"
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            backgroundColor={
-              access === "admin"
-                ? colors.greenAccent[600]
-                : access === "manager"
-                ? colors.greenAccent[700]
-                : colors.greenAccent[700]
-            }
-            borderRadius="4px"
-          >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "manager" && <SecurityOutlinedIcon />}
-            {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-              {access}
-            </Typography>
-          </Box>
-        );
-      },
-    },
+    { field: "Nomdeproduit", headerName: "Nomdeproduit", flex: 1 },
+    { field: "Categorie", headerName: "Categorie", flex: 1 },
+    { field: "Quantite", headerName: "Quantite", flex: 1 },
+    { field: "Prix", headerName: "Prix", flex: 1 },
+    { field: "DateDachat", headerName: "Date D Achat", flex: 1 },
+    { field: "Nomdutilisateur", headerName: "Nom d utilisateur", flex: 1 },
+    
     {
       field: "actions",
       headerName: "Actions",
@@ -115,7 +85,7 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Header title="Users" subtitle="" />
+      <Header title="ADD Produit" subtitle="" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -146,32 +116,22 @@ const Team = () => {
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
             color: `${colors.grey[100]} !important`,
           },
-          "& .MuiDataGrid-root": {
-            border: "none",}
         }}
       >
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleAddClick}
-          sx={{ justifyContent: 'flex-end' }} // Ajustement pour aligner à droite
-        >
+        <Button variant="contained" color="primary" onClick={handleAddClick}>
           Ajouter
         </Button>
 
         <Dialog open={isModalOpen} onClose={handleModalClose}>
-          <DialogTitle>ADD USERS</DialogTitle>
+          <DialogTitle>ADD Produit</DialogTitle>
           <DialogContent>
             <Formik
               onSubmit={handleFormSubmit}
               initialValues={{
-                Nom: selectedRowData?.lastName || "",
-                Prenom: selectedRowData?.firstName || "",
-                address: selectedRowData?.address || "",
-                email: selectedRowData?.email || "",
-                Telephone: selectedRowData?.phone || "",
-                password: selectedRowData?.password || "",
-                role: selectedRowData?.accessLevel || "",
+                Nomdeproduit: selectedRowData?.Nomdeproduit || "",
+                Categorie: selectedRowData?.Categorie || "",
+                Quantite: selectedRowData?.Quantite || "",
+                Prix: selectedRowData?.Prix || "",
               }}
               validationSchema={checkoutSchema}
             >
@@ -198,11 +158,11 @@ const Team = () => {
                       fullWidth
                       variant="filled"
                       type="text"
-                      label="Nom"
+                      label="Nomdeproduit"
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.Nom}
-                      name="Nom"
+                      name="Nomdeproduit"
                       error={!!touched.Nom && !!errors.Nom}
                       helperText={touched.Nom && errors.Nom}
                       sx={{ gridColumn: "span 2" }}
@@ -211,11 +171,11 @@ const Team = () => {
                       fullWidth
                       variant="filled"
                       type="text"
-                      label="Prenom"
+                      label="Categorie"
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.Prenom}
-                      name="Prenom"
+                      name="Categorie"
                       error={!!touched.Prenom && !!errors.Prenom}
                       helperText={touched.Prenom && errors.Prenom}
                       sx={{ gridColumn: "span 2" }}
@@ -224,11 +184,11 @@ const Team = () => {
                       fullWidth
                       variant="filled"
                       type="text"
-                      label="Email"
+                      label="Quantite"
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.email}
-                      name="email"
+                      name="Quantite"
                       error={!!touched.email && !!errors.email}
                       helperText={touched.email && errors.email}
                       sx={{ gridColumn: "span 4" }}
@@ -237,27 +197,14 @@ const Team = () => {
                       fullWidth
                       variant="filled"
                       type="text"
-                      label="Address"
+                      label="Prix"
                       onBlur={handleBlur}
                       onChange={handleChange}
                       value={values.address}
-                      name="address"
+                      name="Prix"
                       error={!!touched.address && !!errors.address}
                       helperText={touched.address && errors.address}
                       sx={{ gridColumn: "span 4" }}
-                    />
-                    <TextField
-                      fullWidth
-                      variant="filled"
-                      type="text"
-                      label="Telephone"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      value={values.Telephone}
-                      name="Telephone"
-                      error={!!touched.Telephone && !!errors.Telephone}
-                      helperText={touched.Telephone && errors.Telephone}
-                      sx={{ gridColumn: "span 2" }}
                     />
                     <TextField
                       fullWidth
@@ -272,19 +219,7 @@ const Team = () => {
                       helperText={touched.dateOfBirth && errors.dateOfBirth}
                       sx={{ gridColumn: "span 2", padding: "8px" }}  // Ajustez la valeur selon vos besoins
                     />
-                    <TextField
-                      fullWidth
-                      variant="filled"
-                      type="password"
-                      label="Mot de passe"
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      value={values.password}
-                      name="password"
-                      error={!!touched.password && !!errors.password}
-                      helperText={touched.password && errors.password}
-                      sx={{ gridColumn: "span 2" }}
-                    />
+                    
                     <FormControl fullWidth variant="filled" sx={{ gridColumn: "span 2" }}>
                       <InputLabel htmlFor="role">Role</InputLabel>
                       <Select
@@ -328,4 +263,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default Produit;

@@ -15,6 +15,7 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import AddIcon from '@mui/icons-material/Add';
+import GroupsIcon from '@mui/icons-material/Groups';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -133,7 +134,7 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="Users"
-              to="/team"
+              to="/Users"
               icon={<PersonAddAlt1Icon />}
               selected={selected}
               setSelected={setSelected}
@@ -147,8 +148,16 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="Ajouter Un Produit"
-              to="/pie"
+              to="/Produit"
               icon={<AddIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
+              title="Club"
+              to="/Club"
+              icon={<GroupsIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -163,14 +172,14 @@ const Sidebar = () => {
             
             <Item
               title="Calendar"
-              to="/calendar"
+              to="/Calendrier"
               icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="discussion"
-              to="/faq"
+              to="/Discussion"
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
